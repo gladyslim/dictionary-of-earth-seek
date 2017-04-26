@@ -1,4 +1,4 @@
-# Node API Stack
+# CAIN Salary API
 This is a stable version of sails project, which is prepared for api design instead of a server render project.
 Since sails also provides server rendering features, for api endpoint is not suitable and we removed these features from this
 project. Although you can try to add them back if you want, and install dependencies like grunt.
@@ -8,7 +8,7 @@ project. Although you can try to add them back if you want, and install dependen
 The best way to scafolld a project is to fork this repository, and then clone:
 
 ```
-git clone https://github.com/seekinternational/node-api-stack
+git clone https://github.com/seekinternational/cain-salary-api
 mv node-api-stack my-new-server
 cd my-new-server
 npm install
