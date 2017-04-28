@@ -10,7 +10,7 @@
  */
 
 module.exports.bootstrap = function(cb) {
-<<<<<<< HEAD
+
   console.log('----_>>>');
 
 
@@ -26,10 +26,5 @@ module.exports.bootstrap = function(cb) {
 
   ImportInitialData();
 
-=======
-
-  // It's very important to trigger this callback method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
->>>>>>> bd91da97a28cd1547e383b11ba9229eeed68ef13
   cb();
 };
