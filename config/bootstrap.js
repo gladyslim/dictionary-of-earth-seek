@@ -1,3 +1,6 @@
+require('colors')
+const strips = require('striptags');
+
 /**
  * Bootstrap
  * (sails.config.bootstrap)
@@ -15,16 +18,30 @@ module.exports.bootstrap = function(cb) {
 
 
 
-  function ImportInitialData () {
+  async function ImportInitialData () {
 
 
     let geology = require('../geology');
-    console.log(geology);
+    
+    for (let term of geology) {
+      await Terms.create({
+        key: strips(term.key),
+        description: term.detail,
+        image: term.imgLink,
+        source: term.source
 
+      });
+      console.log('-> '.bgGreen , term.key);
+    }
+
+    const length = (await Terms.find({})).length;
+    console.log('Length: '.bgRed , length);
     return geology;
   }
 
-  ImportInitialData();
+  ImportInitialData().then(function () {
+    cb();
+  })
 
-  cb();
+  
 };
