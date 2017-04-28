@@ -1,29 +1,37 @@
 {
-  "name": "cain-salary-api",
+  "name": "dictionary-of-earth",
   "private": true,
   "version": "0.0.0",
-  "description": "Complete stack of sails.js",
+  "description": "a Sails application",
   "keywords": [],
   "dependencies": {
-    "bcryptjs": "^2.4.3",
     "ejs": "2.3.4",
+    "grunt": "1.0.1",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-contrib-coffee": "1.0.0",
+    "grunt-contrib-concat": "1.0.1",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-cssmin": "1.0.1",
+    "grunt-contrib-jst": "1.0.0",
+    "grunt-contrib-less": "1.3.0",
+    "grunt-contrib-uglify": "1.0.1",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-sails-linker": "~0.10.1",
+    "grunt-sync": "0.5.2",
     "include-all": "^1.0.0",
-    "rc": "^1.0.1",
+    "rc": "1.0.1",
     "sails": "~0.12.13",
     "sails-disk": "~0.10.9"
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js",
-    "console": "sails console",
-    "test": "mocha test/bootstrap.test.js test/integration/**/*.test.js"
+    "start": "node app.js"
   },
   "main": "app.js",
-  "author": "anonymouse",
-  "license": "",
-  "devDependencies": {
-    "mocha": "^3.2.0",
-    "sails-hook-autoreload": "^0.14.1",
-    "supertest": "^3.0.0"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anonymous node/sails user/dictionary-of-earth.git"
+  },
+  "author": "anonymous node/sails user",
+  "license": ""
 }
