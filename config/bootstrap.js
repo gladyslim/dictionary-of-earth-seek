@@ -16,10 +16,8 @@ module.exports.bootstrap = function(cb) {
 
   console.log('----_>>>');
 
-
-
   async function ImportInitialData () {
-
+    return true;
 
     let geology = require('../geology');
     

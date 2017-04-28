@@ -11,6 +11,10 @@ module.exports = {
     },
     image:{
       type:'string', 
+    },
+    upvotecount: {
+        type: 'integer',
+        defaultsTo: 0
     }
   },
 

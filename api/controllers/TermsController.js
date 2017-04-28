@@ -7,6 +7,21 @@
 
 module.exports = {
 
+
+    'upvote': async function (req, res) {
+        let id = req.params.all().id;
+        let term = await Terms.findOne({id: id});
+        term.upvotecount ++;
+        await term.save();
+        res.json({
+            id: id,
+            term: term 
+        })
+
+
+    },
+
+
     // a CREATE action
     createTermInfo: function(req, res, next) {
 
