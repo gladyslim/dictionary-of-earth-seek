@@ -12,7 +12,6 @@ module.exports = {
     image:{
       type:'string', 
     }
-     
   },
 
 };
