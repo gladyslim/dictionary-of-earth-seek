@@ -10,14 +10,21 @@ module.exports = {
 
     'upvote': async function (req, res) {
         let id = req.params.all().id;
-        let term = await Terms.findOne({id: id});
-        term.upvotecount ++;
-        await term.save();
-        res.json({
-            id: id,
-            term: term 
-        })
-
+        try {
+            let term = await Terms.findOne({id: id});
+            term.upvotecount ++;
+            await term.save();
+            res.json({
+                id: id,
+                term: term 
+            })
+        } catch (error) {
+            res.json({
+                type: 'error',
+                error
+            })
+        }
+        
 
     },
 
