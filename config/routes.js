@@ -45,7 +45,7 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'get /term': 'DataController.findTermInfo',
-  'put /term/:id?': 'DataController.updateTermInfo',
-  'post /term': 'DataController.createTermInfo'
+  'get /term': 'TermsController.findTermInfo',
+  'put /term/:id?': 'TermsController.updateTermInfo',
+  'post /term': 'TermsController.createTermInfo'
 };
