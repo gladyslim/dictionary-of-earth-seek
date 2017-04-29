@@ -1,7 +1,7 @@
 module.exports = {
     getTerm: async function (req, res) {
         try {
-            const terms = await TermsService.getTerm(req.body);
+            const terms = await TermsService.getTerm(req.body.body);
             let results = [];
             for (let terminfo of terms) {
                 terminfo.ugc = await UgcService.getUGC(terminfo.term);

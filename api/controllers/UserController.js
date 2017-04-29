@@ -35,8 +35,8 @@ module.exports = {
                 contains: keyword
             }};
         }
-        let totalTerms = await UGC.count();
-        terms = await UGC.find(criteria);
+        let totalTerms = await Terms.count();
+        terms = await Terms.find(criteria);
         res.view('terms' , {
             terms,
             layout: 'layout',

@@ -10,7 +10,7 @@ module.exports = {
 
     createNewUGC: async function (req, res) {
         try {
-            const result = await UgcService.createNewUGC(req.body);
+            const result = await UgcService.createNewUGC(req.body.body);
             res.json(result);
         } catch (err) {
             res.json(err);
