@@ -27,34 +27,16 @@ html, body {
 }
 
 body {
-  font: normal 1em/1.45em "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   color: #fff;
   background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
   background-attachment: fixed;
 }
-
-h1 {
-  font-weight: 300;
-  font-size: 2.5em;
-  text-transform: uppercase;
-  font-family: Lato;
-  line-height: 1.6em;
-  letter-spacing: .1em;
+ 
+p {
+    color:#fff;
 }
-
-a, a:visited {
-  text-decoration: none;
-  color: white;
-  opacity: .7;
-}
-a:hover, a:visited:hover {
-  opacity: 1;
-}
-a.icon, a:visited.icon {
-  margin-right: 2px;
-  padding: 3px;
-}
+ 
 
 .description {
   padding: 30px;
@@ -63,19 +45,7 @@ a.icon, a:visited.icon {
   left: 0;
   width: 25%;
   z-index: 999;
-}
-.description p {
-  font-size: .9em;
-}
-.description p + p {
-  margin-top: 20px;
-}
-.description p.author {
-  font-size: .7em;
-}
-.description p.author .fa-heart {
-  color: #860014;
-}
+} 
 
 hr {
   margin: 26px 0;
@@ -343,3 +313,7 @@ code {
     transform: rotate(-360deg);
   }
 }
+
+
+
+ 

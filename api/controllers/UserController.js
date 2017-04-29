@@ -16,7 +16,9 @@ module.exports = {
      * Display the form of new term
      */
     'newterm' : function (req, res) {
-        res.render('newentry');
+        res.view('newentry', {
+            layout: 'layout'
+        });
 
     },
 

@@ -4,6 +4,6 @@ module.exports.routes = {
     'put /terms/upvote/:id': 'TermsController.upvoteTerm',
     'get /entry/new': 'UserController.newterm',
     'get /entries': 'UserController.list',
-    'get /entryinfo/:id': 'UserController.entryinfo',
+    'get /entryinfo/:id/:text?': 'UserController.entryinfo',
     '/' : 'UserController.index'
 };
