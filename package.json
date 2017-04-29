@@ -36,5 +36,8 @@
     "url": "git://github.com/anonymous node/sails user/dictionary-of-earth.git"
   },
   "author": "anonymous node/sails user",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "jquery": "^1.12.4"
+  }
 }

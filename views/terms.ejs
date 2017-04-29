@@ -2,25 +2,24 @@
 <br> <br>
 <div class="container">
 
+    <!-- Displaying stats -->
     <div class="row">
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="email">Search</label>
-                <input type="text" name="q" placeholder="term, keyword, definition" class="form-control">
-            </div>
-         
-            <button type="submit" class="btn btn-default">Find</button>
-        </form>
+        
+        <div class="col-md-12">
+            Total entries: <b><%- total %></b>
+        </div>
+    
     </div>
-
-
+ 
+    <!-- Displaying the records -->
     <div class="row">
-
-         
+        
         <% for(let i = 0; i< terms.length; i ++) { let term = terms[i]; %>
-        <div class="bs-callout bs-callout-warning" id="callout-formgroup-inputgroup">
-            <h3><%- term.key %></h3> 
-            <p><%- term.description %></p> 
+        <div class="col-md-6">
+            <div class="bs-callout bs-callout-warning" id="callout-formgroup-inputgroup">
+                <h3><a href='/entryinfo/<%- term.id %>'><%- term.key %></a></h3> 
+                <p><%- term.description %></p> 
+            </div>
         </div>
         <% } %>
     </div>

@@ -7,6 +7,11 @@
 
 module.exports = {
     
+    'index' : function (req, res) {
+        res.view('index' , {
+            layout: 'layout'
+        })
+    },
     /**
      * Display the form of new term
      */
@@ -27,8 +32,21 @@ module.exports = {
                 contains: keyword
             }};
         }
+        let totalTerms = await Terms.count();
         terms = await Terms.find(criteria);
-        res.render('terms' , {terms});
+        res.view('terms' , {
+            terms,
+            layout: 'layout',
+            total: totalTerms
+        });
+    },
+    'entryinfo': async function (req,res) {
+        let id = req.params.all().id;
+        const term = await Terms.findOne({id});
+        res.view('single-entry', {
+            term: term,
+            layout: 'layout'
+        });
     }
 
 };
