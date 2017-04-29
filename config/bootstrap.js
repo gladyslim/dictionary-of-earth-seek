@@ -20,15 +20,21 @@ module.exports.bootstrap = async function (cb) {
         let geology = require('../geology');
 
         for (let term of geology) {
-            await Terms.create({
-                key: strips(term.key),
-                description: term.detail,
-                image: term.imgLink,
-                source: term.source,
-                category: term.category
+            try {
+                
+                await Terms.create({
+                    key: strips(term.key),
+                    description: term.detail,
+                    image: term.imgLink,
+                    source: term.source,
+                    category: term.category
 
-            });
-            console.log('-> '.bgGreen, term.key);
+                });
+                console.log('-> '.bgGreen, term.key);
+            } catch (error) {
+                console.log(')) '.bgRed , term.key);
+            }
+            
         }
 
         const length = (await Terms.find({})).length;
