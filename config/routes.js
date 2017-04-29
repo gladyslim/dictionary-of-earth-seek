@@ -1,5 +1,5 @@
 module.exports.routes = {
-    'get /terms': 'TermsController.getTerm',
+    'POST /terms': 'TermsController.getTerm',
     'get /ugc/:key': 'UgcController.getUGC',
     'put /ugc/upvote/:id': 'UgcController.upvoteUGC',
     'get /entry/new': 'UserController.newterm',
