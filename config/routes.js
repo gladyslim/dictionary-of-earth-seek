@@ -6,5 +6,8 @@ module.exports.routes = {
     'get /entries': 'UserController.list',
     'get /entryinfo/:id/:text?': 'UserController.entryinfo',
     'post /entry/new' : 'TermsController.createNewTerm',
-    '/' : 'UserController.index'
+    '/' : 'UserController.index',
+    '/uploads/*' : {
+        static : './uploads/*'
+    }
 };
