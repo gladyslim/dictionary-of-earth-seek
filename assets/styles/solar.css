@@ -29,7 +29,7 @@ html, body {
 body {
   -webkit-font-smoothing: antialiased;
   color: #fff;
-  background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
+  background: radial-gradient(ellipse at bottom, #424242 0%, #424242 100%);
   background-attachment: fixed;
 }
  

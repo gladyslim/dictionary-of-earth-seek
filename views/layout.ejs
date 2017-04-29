@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%=typeof title == 'undefined' ? 'Seek Dictionary' : title%></title>
-
-    
+<head>
+    <title><%= typeof title == 'undefined' ? 'Seek Dictionary' : title %></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- 
 
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/bootstrap.min.css">
@@ -16,53 +13,38 @@
     <!--STYLES END-->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-  </head>
+</head>
 
-  <body>
+<body style="
+    overflow: hidden;
+    position: relative;
+    width: 100%">
 
-<div class="container">
-
-    <nav class="navbar navbar-default" role="navigation">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">SEEK Hackaton</a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-           <li><a href="/entries">See all entries</a></li>
-           <li><a href="/entry/new">Submit your term</a></li>
-        </ul>
-        <div class="col-sm-3 col-md-3">
-            <form class="navbar-form" action="/entries" role="search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" name="q">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-            </div>
-            </form>
-        </div>
-        
-      </div><!-- /.navbar-collapse -->
-    </nav>
-
- 
+<div class="container" style="
+    height: 80px;
+    background: #424242;
+">
+    <div style="
+    width: 970px;
+    height: inherit;
+    padding-top: 6px;
+">
+        <img src="/images/logo.png" style="object-fit:cover;width: 68px;height: 68px;"/>
+        <span style="
+    color: white;
+    font-weight: bold;
+    font-size: 36px;
+    vertical-align: middle;
+    padding-left: 10px;">SEEK Dictionary</span>
+    </div>
 </div>
 
-    <%- body %>
- 
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <!--SCRIPTS END-->
-  </body>
+<%- body %>
+
+<!--SCRIPTS-->
+<script src="/js/dependencies/sails.io.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.min.js"></script>
+<!--SCRIPTS END-->
+</body>
 </html>
