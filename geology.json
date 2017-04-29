@@ -1337,13 +1337,6 @@
     "source": "Geology.com"
   },
   {
-    "key": "Development",
-    "detail": "The work done on a mineral property before mineral production begins on a commercial scale.",
-    "imgLink": "http://geology.com/a/BLANK.JPG",
-    "category": "earthscience",
-    "source": "Geology.com"
-  },
-  {
     "key": "Development Well",
     "detail": "A well drilled within the proven area of an oil or gas reservoir to the depth of the productive stratigraphic horizon.  These wells are expected to be productive. Shown in the image are horizontal legs of <a href=\"http://geology.com/utica.shtml\">development wells in the Utica Shale</a> of eastern Ohio.",
     "imgLink": "http://geology.com/c2/utica-wells-180.gif",
@@ -7006,13 +6999,6 @@
   {
     "key": "Camera",
     "detail": "<p>An apparatus for taking photographs, generally consisting of a lightproof enclosure having an aperture with a shuttered lens through which the image of an object is focused and recorded on a _photosensitive film or plate.</p>",
-    "category": "earthscience",
-    "imgLink": "",
-    "source": "NASA"
-  },
-  {
-    "key": "CAN",
-    "detail": "<p>Cooperative Agreement Notice. This kind of call results in a cooperative agreement (as opposed to a grant or contract) which might be used to develop a research institute, an extensive educational/public outreach activity or provide technology transfer to develop a capability to enhance U.S. competitiveness.</p>",
     "category": "earthscience",
     "imgLink": "",
     "source": "NASA"
