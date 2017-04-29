@@ -1,6 +1,5 @@
 module.exports.routes = {
-  'post /term': 'TermsController.findTermInfo',
-  'put /term/:id?': 'TermsController.updateTermInfo',
-  'post /term/new': 'TermsController.createTermInfo',
-  'get /term/upvote/:id' : 'TermsController.upvote'
+  'get /terms': 'TermsController.findTermInfo',
+  'post /terms/new': 'TermsController.createNewTerm',
+  'put /terms/upvote/:id' : 'TermsController.upvoteTerm'
 };
