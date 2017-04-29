@@ -1,28 +1,66 @@
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
 
 <div style='background:white'>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <form method='post'>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Term title</label>
-            <input type="text" class="form-control" name="key">
-          </div>
+    <div class="container" style="padding-bottom: 100px; padding-top:38px">
+        <div class="row">
+            <div class="col-xs-12">
+                <form method='post'>
+                    <a style="padding-top: 15px; color:#4095cc" href="javascript:history.back()"><strong>&lt; back to article</strong></a>
+                    <h1 style="text-transform:capitalize;"><%- key %></h1>
+                    <div class="form-group" style="padding-bottom: 15px">
+                        <section>
+                            <img src="<%- terms[0].image %>" style="object-fit:cover;width:400px;height:250px"/>
+                        </section>
+                        <section>
+                            <h2>Top definitions</h2>
+                            <% for(let i = 0; i < terms.length; i++) { %>
+                            <div style="padding-bottom:18px;" class="row">
+                                <div class="col-md-1" style="color:#009142;">
+                                    <span style="font-size:18px;top:5px" class="glyphicon glyphicon-thumbs-up"></span>
+                                    <strong><%- terms[i].upvote_count %></strong>
+                                </div>
+                                <div style="font-size:18px;left: -20px;" class="col-md-11">
+                                    <%- terms[i].description %>
+                                </div>
+                            </div>
 
-          <div class="form-group">
-            <label for="exampleInputEmail1">Source</label>
-            <input type="text" name="source" class="form-control">
-          </div>
+                            <div class="row"></div>
+                            <% } %>
 
-          <div class="form-group">
-            <label for="exampleInputPassword1">Term Description</label>
-            <textarea type="text" name="description" class="form-control" style='height:120px;' placeholder="Describe about this term"></textarea>
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+                            <a style="padding-top: 15px; color:#4095cc" href=""><strong>See more definitions</strong></a>
+                        </section>
 
-      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Add your definition</label>
+                        <textarea type="text" name="description" class="form-control" style='height:120px;'
+                                  placeholder="Something you think people will understand in generation"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Source of your definition (If any)</label>
+                        <input type="text" name="source" class="form-control"
+                               placeholder="E.g. Wikipedia, Merriam-Webster, etc">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Author</label>
+                        <input type="text" name="source" class="form-control" placeholder="Your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Role</label>
+                        <input type="text" name="source" class="form-control" placeholder="Your role">
+                    </div>
+                    <div style="padding-top: 10px">
+                        <button type="submit" class="btn btn-default"
+                                style="background-color:#fbb03b;color:white;border:none;border-radius:1px;width:150px;height:38ox;font-size:18px" onclick="">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

@@ -1,6 +1,6 @@
 module.exports = {
     connection: 'mysql',
-    tableName: 'terms',
+    tableName: 'ugc',
     attributes: {
         id: {
             type: 'integer',
@@ -8,21 +8,27 @@ module.exports = {
             unique: true,
             primaryKey: true,
         },
-        key: {
+        user_name: {
             type: 'string',
+        },
+        user_role: {
+            type: 'string'
+        },
+        key: {
+            type: 'string'
         },
         description: {
-            type: 'text',
+            type: 'text'
         },
         image: {
-            type: 'string',
+            type: 'string'
         },
         source: {
-            type: 'string',
+            type: 'string'
         },
-        category: {
-            type: 'string',
-        }
+        upvote_count: {
+            type: 'integer',
+            defaultsTo: 0,
+        },
     },
-
 };

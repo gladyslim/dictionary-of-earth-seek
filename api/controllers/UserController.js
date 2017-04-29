@@ -15,9 +15,14 @@ module.exports = {
     /**
      * Display the form of new term
      */
-    'newterm' : function (req, res) {
+    'newterm' : async function (req, res) {
+        let key = decodeURI(req.params.all().key);
+        const terms = await UGC.find({key: key}).sort({ upvote_count: 'DESC' });
+
         res.view('newentry', {
-            layout: 'layout'
+            layout: 'layout',
+            key: key,
+            terms: terms,
         });
 
     },
@@ -46,7 +51,7 @@ module.exports = {
     },
     'entryinfo': async function (req,res) {
         let id = req.params.all().id;
-        const term = await Terms.findOne({id});
+        const term = await UGC.findOne({id});
 
         if (term.image && !utils.hasImage(term.image)) {
             await utils.download(term.image , utils.getUploadPath(term.image));
@@ -56,6 +61,13 @@ module.exports = {
             layout: 'layout',
             image: utils.getUploadPathUri(term.image)
         });
-    }
+    },
+    'getEntryInfo': async function (req,res) {
+        let key = decodeURI(req.params.all().key);
+        console.log(key)
+        const term = await UGC.find({key: key}).sort({ upvote_count: 'DESC' });
+        console.log(term);
+        res.json(term);
+    },
 
 };

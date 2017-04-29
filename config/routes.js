@@ -9,13 +9,13 @@ module.exports.routes = {
     },
     
     'post /terms/new': 'TermsController.createNewTerm',
-    'put /terms/upvote/:id': 'TermsController.upvoteTerm',
     'get /entry/new': 'UserController.newterm',
+    'post /terms': 'TermsController.getTerm',
+    'get /ugc/:key': 'UgcController.getUGC',
+    'put /ugc/upvote/:id': 'UgcController.upvoteUGC',
+    'get /entries/:key': 'UserController.newterm',
     'get /entries': 'UserController.list',
     'get /entryinfo/:id/:text?': 'UserController.entryinfo',
-    'post /entry/new' : 'TermsController.createNewTerm',
-    '/' : 'UserController.index',
-    '/uploads/*' : {
-        static : './uploads/*'
-    }
+    'post /entry/new' : 'UgcController.createNewUGC',
+    '/' : 'UserController.index'
 };
