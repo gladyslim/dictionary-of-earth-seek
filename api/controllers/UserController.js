@@ -35,8 +35,8 @@ module.exports = {
                 contains: keyword
             }};
         }
-        let totalTerms = await Terms.count();
-        terms = await Terms.find(criteria);
+        let totalTerms = await UGC.count();
+        terms = await UGC.find(criteria);
         res.view('terms' , {
             terms,
             layout: 'layout',
@@ -46,7 +46,7 @@ module.exports = {
     },
     'entryinfo': async function (req,res) {
         let id = req.params.all().id;
-        const term = await Terms.findOne({id});
+        const term = await UGC.findOne({id});
         res.view('single-entry', {
             term: term,
             layout: 'layout'

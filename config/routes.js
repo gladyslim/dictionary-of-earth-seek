@@ -1,10 +1,10 @@
 module.exports.routes = {
-    'get /terms': 'TermsController.findTermInfo',
-    'post /terms/new': 'TermsController.createNewTerm',
-    'put /terms/upvote/:id': 'TermsController.upvoteTerm',
+    'get /terms': 'TermsController.getTerm',
+    'get /ugc/:key': 'UgcController.getUGC',
+    'put /ugc/upvote/:id': 'UgcController.upvoteUGC',
     'get /entry/new': 'UserController.newterm',
     'get /entries': 'UserController.list',
     'get /entryinfo/:id/:text?': 'UserController.entryinfo',
-    'post /entry/new' : 'TermsController.createNewTerm',
+    'post /entry/new' : 'UgcController.createNewUGC',
     '/' : 'UserController.index'
 };

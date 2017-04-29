@@ -1,18 +1,18 @@
 module.exports = {
-    findTermInfo: async function (req, res) {
-        const result = await TermsService.findTermInfo(req.body);
-        res.json(result);
-    },
-    createNewTerm: async function (req, res) {
-        const termInfo = req.body;
-        const result = await TermsService.createNewTerm(termInfo);
-        res.json(result);
-    },
+    getTerm: async function (req, res) {
+        try {
+            const terms = await TermsService.getTerm(req.body);
+            let results = [];
+            for (let terminfo of terms) {
+                terminfo.ugc = await UgcService.getUGC(terminfo.term);
+                results.push(terminfo);
+            }
 
-    upvoteTerm: async function (req, res) {
-        let id = req.params.all().id;
-        const result = await TermsService.upvoteTerm(id)
-        res.json(result);
+            res.json(results);
+        } catch (err) {
+            console.log(err);
+            res.json(err);
+        }
     },
 
     _config: {}

@@ -19,16 +19,6 @@ module.exports = {
         },
         source: {
             type: 'string',
-        },
-        user_name: {
-            type: 'string',
-        },
-        user_role: {
-            type: 'string'
-        },
-        upvote_count: {
-            type: 'integer',
-            defaultsTo: 0
         }
     },
 
