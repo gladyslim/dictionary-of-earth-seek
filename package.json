@@ -36,5 +36,9 @@
     "url": "git://github.com/anonymous node/sails user/dictionary-of-earth.git"
   },
   "author": "anonymous node/sails user",
-  "license": ""
+  "license": "",
+  "devDependencies": {
+    "sails-mysql": "0.11.5",
+    "waterline": "0.11.11"
+  }
 }
