@@ -14,10 +14,10 @@
     <!-- Displaying the records -->
     <div class="row">
         
-        <% for(let i = 0; i< terms.length; i ++) { let term = terms[i]; %>
+        <% for(let i = 0; i< terms.length; i ++) { let term = normalizeTerm(terms[i]); %>
         <div class="col-md-6 item-object">
             <div class="bs-callout bs-callout-warning" id="callout-formgroup-inputgroup">
-                <h3><a href='/entryinfo/<%- term.id %>/<%-term.key.replace(/ /g , "-")%>'><%- term.key %></a></h3> 
+                <h3><a href='/entryinfo/<%- term.id %>/<%- term.key.replace(/ /g , "-")%>'><%- term.key %></a></h3> 
                 <p><%- term.description %></p> 
             </div>
         </div>

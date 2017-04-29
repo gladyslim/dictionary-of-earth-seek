@@ -5,5 +5,6 @@ module.exports.routes = {
     'get /entry/new': 'UserController.newterm',
     'get /entries': 'UserController.list',
     'get /entryinfo/:id/:text?': 'UserController.entryinfo',
+    'post /entry/new' : 'TermsController.createNewTerm',
     '/' : 'UserController.index'
 };
