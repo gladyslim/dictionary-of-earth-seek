@@ -12,13 +12,11 @@ const strips = require('striptags');
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
-module.exports.bootstrap = function(cb) {
+module.exports.bootstrap = async function(cb) {
 
   console.log('----_>>>');
 
   async function ImportInitialData () {
-    return true;
-
     let geology = require('../geology');
     
     for (let term of geology) {
@@ -37,9 +35,12 @@ module.exports.bootstrap = function(cb) {
     return geology;
   }
 
-  ImportInitialData().then(function () {
-    cb();
-  })
+  const count = await Terms.count();
 
-  
+  console.log(count);
+  if (count == 0) {
+      await ImportInitialData();
+  }
+
+  cb();
 };

@@ -1,6 +1,12 @@
 module.exports = {
+    findTermInfo: async function (req, res) {
+        console.log('here');
+        console.log(req.body);
+        const result = await TermsService.findTermInfo(req.body);
+        res.json(result);
+    },
     createNewTerm: async function (req, res) {
-        const termInfo = req.body.termInfo;
+        const termInfo = req.body;
         const result = await TermsService.createNewTerm(termInfo);
         res.json(result);
     },
@@ -8,11 +14,6 @@ module.exports = {
     upvoteTerm: async function (req, res) {
         let id = req.params.all().id;
         const result = await TermsService.upvoteTerm(id, req.body)
-        res.json(result);
-    },
-
-    findTermInfo: async function (req, res) {
-        const result = await TermsService.findTermInfo(req.body);
         res.json(result);
     },
 

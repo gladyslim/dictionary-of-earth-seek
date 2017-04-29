@@ -1,4 +1,6 @@
 module.exports = {
+    connection: 'mysql',
+    tableName: 'terms',
     attributes: {
         id: {
             type: 'integer',
@@ -9,20 +11,22 @@ module.exports = {
         key: {
             type: 'string',
         },
-        detail: {
-            type: 'string',
+        description: {
+            type: 'text',
         },
-        imgLink: {
+        image: {
             type: 'string',
         },
         source: {
             type: 'string',
         },
-        userName: {},
-        userRole: {
+        user_name: {
+            type: 'string',
+        },
+        user_role: {
             type: 'string'
         },
-        upvoteCount: {
+        upvote_count: {
             type: 'integer',
             defaultsTo: 0
         }

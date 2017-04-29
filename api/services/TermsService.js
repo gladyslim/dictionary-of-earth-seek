@@ -6,11 +6,11 @@ module.exports = {
     createNewTerm: async function (termInfo) {
         return await Terms.create({
             key : termInfo.name,
-            detail: termInfo.description,
-            imgLink: termInfo.image,
+            description: termInfo.description,
+            image: termInfo.image,
             source: termInfo.source,
-            userName: termInfo.username,
-            userRole: termInfo.userrole,
+            user_name: termInfo.username,
+            user_role: termInfo.userrole,
         });
     },
 
@@ -18,7 +18,7 @@ module.exports = {
         try {
             const term = await
             Terms.findOne({ id: termId });
-            term.upvoteCount++;
+            term.upvote_count++;
             return await term.save();
         } catch (error) {
             return error;
