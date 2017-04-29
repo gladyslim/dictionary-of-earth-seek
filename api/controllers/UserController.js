@@ -21,6 +21,7 @@ module.exports = {
         });
 
     },
+ 
 
     /**
      * Display the data to the public
@@ -39,7 +40,8 @@ module.exports = {
         res.view('terms' , {
             terms,
             layout: 'layout',
-            total: totalTerms
+            total: totalTerms,
+            normalizeTerm: utils.normalizeTerm
         });
     },
     'entryinfo': async function (req,res) {
