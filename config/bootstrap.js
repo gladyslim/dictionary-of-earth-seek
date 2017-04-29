@@ -12,35 +12,36 @@ const strips = require('striptags');
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.bootstrap.html
  */
 
-module.exports.bootstrap = async function(cb) {
+module.exports.bootstrap = async function (cb) {
 
-  console.log('----_>>>');
+    console.log('----_>>>');
 
-  async function ImportInitialData () {
-    let geology = require('../geology');
-    
-    for (let term of geology) {
-      await Terms.create({
-        key: strips(term.key),
-        description: term.detail,
-        image: term.imgLink,
-        source: term.source
+    async function ImportInitialData() {
+        let geology = require('../geology');
 
-      });
-      console.log('-> '.bgGreen , term.key);
+        for (let term of geology) {
+            await Terms.create({
+                key: strips(term.key),
+                description: term.detail,
+                image: term.imgLink,
+                source: term.source,
+                category: term.category
+
+            });
+            console.log('-> '.bgGreen, term.key);
+        }
+
+        const length = (await Terms.find({})).length;
+        console.log('Length: '.bgRed, length);
+        return geology;
     }
 
-    const length = (await Terms.find({})).length;
-    console.log('Length: '.bgRed , length);
-    return geology;
-  }
+    const count = await Terms.count();
 
-  const count = await Terms.count();
+    console.log(count);
+    if (count == 0) {
+        await ImportInitialData();
+    }
 
-  console.log(count);
-  if (count == 0) {
-      await ImportInitialData();
-  }
-
-  cb();
+    cb();
 };

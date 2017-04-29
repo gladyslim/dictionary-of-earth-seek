@@ -19,6 +19,9 @@ module.exports = {
         },
         source: {
             type: 'string',
+        },
+        category: {
+            type: 'string',
         }
     },
 

@@ -3,13 +3,18 @@ const _ = require('lodash')
 const strip = require('striptags');
 
 module.exports = {
-    getTerm: async function(text) {
+    getTerm: async function(text, category = null) {
         try {
-            const terms = await Terms.find({ select: ['key', 'description', 'image', 'source']}).sort({ key: 'DESC' });
+            let query = { select: ['key', 'description', 'image', 'source']};
+            if (category) {
+                query.where = { category: category };
+            }
+            const terms = await Terms.find(query).sort({ key: 'DESC' });
             let matchedTerms = [];
             for (let term of terms) {
                 let key = strip(term.key);
-                let match = text.match(key);
+                let csKey = new RegExp(" " + key + " ", 'i');
+                let match = text.match(csKey);
                 if (match && ~match.index) {
                     matchedTerms.push(term);
                 }

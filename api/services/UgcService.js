@@ -6,7 +6,6 @@ module.exports = {
                 user_role: ugc.user_role,
                 key: ugc.key,
                 description: ugc.description,
-                image: ugc.image,
                 source: ugc.source,
             });
         } catch (err) {
