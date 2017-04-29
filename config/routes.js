@@ -1,5 +1,13 @@
 module.exports.routes = {
-    'get /terms': 'TermsController.findTermInfo',
+    'get /terms': {
+        controller: 'TermsController',
+        action: 'findTermInfo',
+        cors: {
+            origin: '*',
+            headers: 'Content-Type'
+        }
+    },
+    
     'post /terms/new': 'TermsController.createNewTerm',
     'put /terms/upvote/:id': 'TermsController.upvoteTerm',
     'get /entry/new': 'UserController.newterm',
