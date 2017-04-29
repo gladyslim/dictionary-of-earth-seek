@@ -47,9 +47,14 @@ module.exports = {
     'entryinfo': async function (req,res) {
         let id = req.params.all().id;
         const term = await UGC.findOne({id});
+
+        if (term.image && !utils.hasImage(term.image)) {
+            await utils.download(term.image , utils.getUploadPath(term.image));
+        }
         res.view('single-entry', {
             term: term,
-            layout: 'layout'
+            layout: 'layout',
+            image: utils.getUploadPathUri(term.image)
         });
     }
 

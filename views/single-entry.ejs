@@ -1,7 +1,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
+            <% if (term.image) { %>
+                <img style='border-radius:100%; border:5px solid white; max-width:250px;' src="<%- image %>">
+            <% } %>
+        </div>
+        <div class="col-md-8">
             <h1><%- term.key %></h1>
             <%- term.description %>
         </div>
