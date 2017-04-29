@@ -1,7 +1,5 @@
 module.exports = {
     findTermInfo: async function (req, res) {
-        console.log('here');
-        console.log(req.body);
         const result = await TermsService.findTermInfo(req.body);
         res.json(result);
     },
@@ -13,7 +11,7 @@ module.exports = {
 
     upvoteTerm: async function (req, res) {
         let id = req.params.all().id;
-        const result = await TermsService.upvoteTerm(id, req.body)
+        const result = await TermsService.upvoteTerm(id)
         res.json(result);
     },
 
