@@ -44,9 +44,9 @@ module.exports.connections = {
     adapter: 'sails-mysql',
     host: 'localhost',
     port: 3306,
-    user: 'root', //optional
-    password: 'password1', //optional
-    database: 'nasa-seek' //optional
+    user: process.env.DBUSER || 'root', //optional
+    password: process.env.DBPASS || 'password1', //optional
+    database: process.env.DB || 'nasa-seek' //optional
   },
 
   /***************************************************************************
