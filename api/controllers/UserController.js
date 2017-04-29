@@ -20,10 +20,14 @@ module.exports = {
      */
     'list' : async function (req,res) {
         let keyword = req.params.all().q;
-        console.log(keyword);
+        let criteria = {};
         let terms = [];
-
-        terms = await Terms.find();
+        if (keyword) {
+            criteria = {key: {
+                contains: keyword
+            }};
+        }
+        terms = await Terms.find(criteria);
         res.render('terms' , {terms});
     }
 
