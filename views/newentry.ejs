@@ -8,9 +8,11 @@
                     <a style="padding-top: 15px; color:#4095cc" href="javascript:history.back()"><strong>&lt; back to article</strong></a>
                     <h1 style="text-transform:capitalize;"><%- key %></h1>
                     <div class="form-group" style="padding-bottom: 15px">
+                        <% if (terms[0]) { %>
                         <section>
                             <img src="<%- terms[0].image %>" style="object-fit:cover;width:400px;height:250px"/>
                         </section>
+                        <% } %>
                         <section>
                             <h2>Top definitions</h2>
                             <% for(let i = 0; i < terms.length; i++) { %>
