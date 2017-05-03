@@ -1,6 +1,6 @@
 module.exports = {
     connection: 'mysql',
-    tableName: 'terms',
+    tableName: 'ref_sources',
     attributes: {
         id: {
             type: 'integer',
@@ -11,9 +11,8 @@ module.exports = {
         key: {
             type: 'string',
         },
-        is_active: {
-            type: 'boolean',
-            defaultsTo: true
+        description: {
+            type: 'text',
         }
     },
 

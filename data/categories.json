@@ -1,0 +1,18 @@
+[
+  {
+    "key": "geology",
+    "description": "Geology"
+  },
+  {
+    "key": "history",
+    "description": "World History"
+  },
+  {
+    "key": "art",
+    "description": "Art"
+  },
+  {
+    "key": "business",
+    "description": "Business"
+  }
+]

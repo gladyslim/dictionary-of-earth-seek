@@ -1,6 +1,6 @@
 module.exports = {
     connection: 'mysql',
-    tableName: 'terms',
+    tableName: 'images',
     attributes: {
         id: {
             type: 'integer',
@@ -8,8 +8,17 @@ module.exports = {
             unique: true,
             primaryKey: true,
         },
-        key: {
+        term_id: {
+            type: 'integer'
+        },
+        source_id: {
+            type: 'integer'
+        },
+        url: {
             type: 'string',
+        },
+        path: {
+            type: 'string'
         },
         is_active: {
             type: 'boolean',

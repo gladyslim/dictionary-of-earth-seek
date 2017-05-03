@@ -1,0 +1,14 @@
+[
+  {
+    "key": "en",
+    "description": "English"
+  },
+  {
+    "key": "jp",
+    "description": "Japanese"
+  },
+  {
+    "key": "cn",
+    "description": "Chinese"
+  }
+]

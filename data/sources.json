@@ -1,0 +1,22 @@
+[
+  {
+    "key": "geology",
+    "description": "Geology.com"
+  },
+  {
+    "key": "wikipedia",
+    "description": "Wikipedia"
+  },
+  {
+    "key": "Merriam Webster",
+    "description": "Merriam-webster.com"
+  },
+  {
+    "key": "nasa",
+    "description": "NASA"
+  },
+  {
+    "key": "business",
+    "description": "Business"
+  }
+]

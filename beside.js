@@ -10,7 +10,7 @@ const _ = require('lodash')
 
 const strip = require('striptags');
 
-let terms = require('./geology');
+let terms = require('./data/geology');
 terms = terms.sort(function(a, b){
   // ASC  -> a.length - b.length
   // DESC -> b.length - a.length

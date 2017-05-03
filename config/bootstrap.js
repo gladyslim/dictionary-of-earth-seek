@@ -17,29 +17,106 @@ module.exports.bootstrap = async function (cb) {
     console.log('----_>>>');
 
     async function ImportInitialData() {
-        let geology = require('../geology');
+        let categories = require('../data/categories');
 
-        for (let term of geology) {
+        for (let category of categories) {
             try {
-                
-                await Terms.create({
-                    key: strips(term.key),
-                    description: term.detail,
-                    image: term.imgLink,
-                    source: term.source,
-                    category: term.category
-
+                await RefCategories.create({
+                    key: category.key,
+                    description: category.description
                 });
-                console.log('-> '.bgGreen, term.key);
             } catch (error) {
-                console.log(')) '.bgRed , term.key);
+                console.log(')) '.bgRed , error);
             }
-            
         }
 
-        const length = (await Terms.find({})).length;
-        console.log('Length: '.bgRed, length);
-        return geology;
+        let sources = require('../data/sources');
+
+        for (let source of sources) {
+            try {
+                await RefSources.create({
+                    key: source.key,
+                    description: source.description
+                });
+            } catch (error) {
+                console.log(')) '.bgRed , error);
+            }
+        }
+
+        let languages = require('../data/languages');
+
+        for (let language of languages) {
+            try {
+                await RefLanguages.create({
+                    key: language.key,
+                    description: language.description
+                });
+            } catch (error) {
+                console.log(')) '.bgRed , error);
+            }
+        }
+
+        let geologies = require('../data/geology');
+
+        for (let geology of geologies) {
+            try {
+                let sourceId = null;
+                let languageId = null;
+                let categoryId = null;
+
+                let term = await Terms.findOrCreate({key: strips(geology.key)}, { key: strips(geology.key)}).exec(async (err, term) => {
+                    return term.id;
+                });
+
+                sourceId = await RefSources.find({ description: geology.source }).exec((err, source) => {
+                    if (err) return err;
+
+                    return source.id;
+                });
+
+                languageId = await RefLanguages.find({ key: geology.language }).exec((err, language) => {
+                    if (err) return err;
+
+                    return language.id;
+                });
+
+                categoryId = await RefCategories.find({ key: geology.category }).exec((err, category) => {
+                    if (err) return err;
+
+                    return category.id;
+                });
+
+                if (geology.imgLink) {
+                    await Images.create({
+                        term_id: term.id,
+                        url: geology.imgLink,
+                        source_id: sourceId
+                    });
+                }
+
+                await Definitions.create({
+                    term_id: term.id,
+                    definition: geology.detail,
+                    source_id: sourceId,
+                    category_id: categoryId,
+                    language_id: languageId
+                }).exec((err, data) => {
+                    if (err) {
+                        return err;
+                    }
+
+                    return data.id;
+                });
+
+                console.log('-> '.bgGreen, geology.key);
+            } catch (error) {
+                console.log(')) '.bgRed , geology.key);
+            }
+
+            const length = (await Terms.find({})).length;
+            console.log('Length: '.bgRed, length);
+            return geology;
+        }
     }
 
     const count = await Terms.count();
