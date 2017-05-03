@@ -11,8 +11,8 @@ module.exports = {
         term_id: {
             type: 'integer'
         },
-        definiton: {
-            type: 'string',
+        definition: {
+            type: 'text',
         },
         source_id: {
             type: 'integer'
@@ -31,6 +31,10 @@ module.exports = {
         },
         upvote_count: {
             type: 'integer',
+            defaultsTo: 0
+        },
+        preferred: {
+            type: 'boolean',
             defaultsTo: 0
         },
         is_active: {

@@ -13,109 +13,75 @@ const strips = require('striptags');
  */
 
 module.exports.bootstrap = async function (cb) {
-
     console.log('----_>>>');
 
+    let categories = require('../data/categories');
+
+    for (let category of categories) {
+        await RefCategories.create({
+            key: category.key,
+            description: category.description
+        });
+    }
+
+    let sources = require('../data/sources');
+
+    for (let source of sources) {
+        await RefSources.create({
+            key: source.key,
+            description: source.description
+        });
+    }
+
+    let languages = require('../data/languages');
+
+    for (let language of languages) {
+        await RefLanguages.create({
+            key: language.key,
+            description: language.description
+        });
+    }
+
     async function ImportInitialData() {
-        let categories = require('../data/categories');
+        try {
+            let geologies = require('../data/geology');
 
-        for (let category of categories) {
-            try {
-                await RefCategories.create({
-                    key: category.key,
-                    description: category.description
-                });
-            } catch (error) {
-                console.log(')) '.bgRed , error);
-            }
-        }
+            for (let geology of geologies) {
+                let source = null;
+                let language = null;
+                let category = null;
+                let term = null;
 
-        let sources = require('../data/sources');
-
-        for (let source of sources) {
-            try {
-                await RefSources.create({
-                    key: source.key,
-                    description: source.description
-                });
-            } catch (error) {
-                console.log(')) '.bgRed , error);
-            }
-        }
-
-        let languages = require('../data/languages');
-
-        for (let language of languages) {
-            try {
-                await RefLanguages.create({
-                    key: language.key,
-                    description: language.description
-                });
-            } catch (error) {
-                console.log(')) '.bgRed , error);
-            }
-        }
-
-        let geologies = require('../data/geology');
-
-        for (let geology of geologies) {
-            try {
-                let sourceId = null;
-                let languageId = null;
-                let categoryId = null;
-
-                let term = await Terms.findOrCreate({key: strips(geology.key)}, { key: strips(geology.key)}).exec(async (err, term) => {
-                    return term.id;
-                });
-
-                sourceId = await RefSources.find({ description: geology.source }).exec((err, source) => {
-                    if (err) return err;
-
-                    return source.id;
-                });
-
-                languageId = await RefLanguages.find({ key: geology.language }).exec((err, language) => {
-                    if (err) return err;
-
-                    return language.id;
-                });
-
-                categoryId = await RefCategories.find({ key: geology.category }).exec((err, category) => {
-                    if (err) return err;
-
-                    return category.id;
-                });
+                term = await Terms.findOrCreate({ key: strips(geology.key) }, { key: strips(geology.key) });
+                source = await RefSources.findOne({ description: geology.source });
+                language = await RefLanguages.findOne({ key: geology.language });
+                category = await RefCategories.findOne({ key: geology.category });
 
                 if (geology.imgLink) {
                     await Images.create({
                         term_id: term.id,
                         url: geology.imgLink,
-                        source_id: sourceId
+                        source_id: source.id
                     });
                 }
 
                 await Definitions.create({
                     term_id: term.id,
                     definition: geology.detail,
-                    source_id: sourceId,
-                    category_id: categoryId,
-                    language_id: languageId
-                }).exec((err, data) => {
-                    if (err) {
-                        return err;
-                    }
-
-                    return data.id;
+                    source_id: source.id,
+                    category_id: category.id,
+                    language_id: language.id,
+                    preferred: true
                 });
 
-                console.log('-> '.bgGreen, geology.key);
-            } catch (error) {
-                console.log(')) '.bgRed , geology.key);
+                console.log('-> '.bgGreen, term.key);
             }
 
             const length = (await Terms.find({})).length;
             console.log('Length: '.bgRed, length);
-            return geology;
+            return geologies;
+        } catch (error) {
+            console.log(error);
         }
     }
 

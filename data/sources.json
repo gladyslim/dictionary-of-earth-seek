@@ -18,5 +18,9 @@
   {
     "key": "business",
     "description": "Business"
+  },
+  {
+    "key": "google",
+    "description": "Google.com"
   }
 ]
