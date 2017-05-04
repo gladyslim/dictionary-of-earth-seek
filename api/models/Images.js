@@ -11,6 +11,9 @@ module.exports = {
         source_id: {
             type: 'integer'
         },
+        term: {
+            model: 'terms'
+        },
         url: {
             type: 'string',
         },
@@ -20,9 +23,6 @@ module.exports = {
         is_active: {
             type: 'boolean',
             defaultsTo: true
-        },
-        term: {
-            model: 'terms'
         }
     },
 
