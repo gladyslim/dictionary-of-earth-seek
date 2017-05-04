@@ -59,14 +59,14 @@ module.exports.bootstrap = async function (cb) {
 
                 if (geology.imgLink) {
                     await Images.create({
-                        term_id: term.id,
+                        term: term.id,
                         url: geology.imgLink,
                         source_id: source.id
                     });
                 }
 
                 await Definitions.create({
-                    term_id: term.id,
+                    term: term.id,
                     definition: geology.detail,
                     source_id: source.id,
                     category_id: category.id,

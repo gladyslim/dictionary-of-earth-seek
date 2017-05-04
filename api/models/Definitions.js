@@ -8,9 +8,6 @@ module.exports = {
             unique: true,
             primaryKey: true,
         },
-        term_id: {
-            type: 'integer'
-        },
         definition: {
             type: 'text',
         },
@@ -40,6 +37,9 @@ module.exports = {
         is_active: {
             type: 'boolean',
             defaultsTo: true
+        },
+        term: {
+            model: 'terms'
         }
     },
 
