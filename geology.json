@@ -7501,13 +7501,6 @@
     "source": "NASA"
   },
   {
-    "key": "HIS",
-    "detail": "<p>Inner Heliospheric Sentinels</p>",
-    "category": "earthscience",
-    "imgLink": "",
-    "source": "NASA"
-  },
-  {
     "key": "HQ Procurement Office at GSFC (Code 210.H)",
     "detail": "<p>The HQ Procurement Office, physically located at GSFC, issued grants and cooperative agreements for the space flight center and the science mission directorate through April 2006. The HQ procurement office is responsible for issuing annual funding continuations and closing out all awards that they initiated. The web site for tracking grants and annual continuations can be found at <a href=\"http://grantstatus.gsfc.nasa.gov/\">here</a>.<br></p>",
     "category": "earthscience",
@@ -7923,13 +7916,6 @@
   {
     "key": "NESSF",
     "detail": "<p><a href=\"http://nspires.nasaprs.com/external/solicitations/summary.do?method=init&amp;solId=%7B17EE5894-7FE1-44C8-431F-A985AEEE4B3C%7D&amp;path=open\">NASA Earth and Space Science Fellowship</a></p>",
-    "category": "earthscience",
-    "imgLink": "",
-    "source": "NASA"
-  },
-  {
-    "key": "NEWS",
-    "detail": "<p>NASA Energy and Water cycle Study</p>",
     "category": "earthscience",
     "imgLink": "",
     "source": "NASA"
