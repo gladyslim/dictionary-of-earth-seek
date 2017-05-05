@@ -1,79 +1,102 @@
 <link rel="stylesheet" href="/styles/bootstrap.min.css">
-<script>
-    $("#submit").click(function(){
-        $.post("/entry/new", $("#createNewEntry").serialize(), function(data) {
-            return true;
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript">
+    function submitForm(e) {
+        // normal javascript POST
+        // redirect back
+        try {
+        $.ajax({
+            type: 'POST',
+            url: '/entry/new',
+            data: $('#createNewEntry').serialize(),
+            success: function () {
+                alert("Thank you for your contribution!");
+                //alert(document.location);
+                window.location.href = '/entry/new?key=' + $("#keyInput").val();
+            }
         });
-    });
+        } catch (e){
+            alert(e);
+        }
+    }
 </script>
 
 <div style='background:white;height: inherit;position: relative;overflow: scroll;'>
     <div class="container" style="padding-bottom: 100px; padding-top:38px">
         <div class="row">
             <div class="col-xs-12">
-                <form method='post' id="createNewEntry">
+                <form id="createNewEntry">
                     <a style="padding-top: 15px; color:#4095cc" href="javascript:history.back()"><strong>&lt; back to article</strong></a>
-                    <h2 style="text-transform:capitalize;padding:10px 0; margin-bottom: 20px;"><%- key %></h2>
-                    <input type="hidden" name="key" class="form-control" value=<%- key %>>
+                    <h2 style="text-transform:capitalize;padding:10px 0; margin-bottom: 20px;">
+                        <%- key %>
+                    </h2>
+                    <input id="keyInput" type="hidden" name="key" class="form-control" value=<%- key %>>
                     <div class="form-group" style="padding-bottom: 15px">
                         <% if (terms[0]) { %>
-                        <section style="display:inline-flex;">
-                            <img src=<%- terms[0].image %> style="object-fit:cover;width:400px;height:250px;margin-right:2em;"/>
-                            <div style="padding:2em; border-style:dashed;border-width:2px;border-color: #e0e0e0;padding-top: 7em;width:200px;">
-                                <p style="text-align: center;color: #9e9e9e;"><span class="glyphicon glyphicon-plus-sign" style="font-size: 1.5em"></span><br>Add a new picture</p>
-                            </div>
-                        </section>
-                        <%
+                            <section style="display:inline-flex;">
+                                <img src=<%- terms[0].image %> style="object-fit:cover;width:400px;height:250px;margin-right:2em;"/>
+                                <div style="padding:2em; border-style:dashed;border-width:2px;border-color: #e0e0e0;padding-top: 7em;width:200px;">
+                                    <p style="text-align: center;color: #9e9e9e;"><span class="glyphicon glyphicon-plus-sign" style="font-size: 1.5em"></span><br>Add a
+                                        new picture</p>
+                                </div>
+                            </section>
+                            <%
                         }
                         if (terms.length > 0) {
                         %>
-                        <section style="padding-top: 20px;">
-                            <h4>Top definitions</h4>
-                            <% for(let i = 0; i < terms.length; i++) { %>
-                            <div style="padding-bottom:18px;" class="row">
-                                <div class="col-md-1" style="color:#009142;">
-                                    <span style="font-size:18px;top:5px;" class="glyphicon glyphicon-thumbs-up"></span>
-                                    <strong><%- terms[i].upvote_count %></strong>
-                                </div>
-                                <div style="font-size:16px;left: -20px; top:3px;" class="col-md-11">
-                                    <%- terms[i].description %>
-                                </div>
-                            </div>
-                            <div class="row"></div>
-                            <% } %>
-                            <a style="padding-top: 15px; color:#4095cc" href=""><strong>See more definitions</strong></a>
-                        </section>
-                        <% } %>
+                                <section style="padding-top: 20px;">
+                                    <h4>Top definitions</h4>
+                                    <% for(let i = 0; i < terms.length; i++) { %>
+                                        <div style="padding-bottom:18px;" class="row">
+                                            <div class="col-md-1" style="color:#009142;">
+                                                <span style="font-size:18px;top:5px;" class="glyphicon glyphicon-thumbs-up"></span>
+                                                <strong><%- terms[i].upvote_count %></strong>
+                                            </div>
+                                            <div style="font-size:16px;left: -20px; top:3px;" class="col-md-11">
+                                                <%- terms[i].description %>
+                                            </div>
+                                        </div>
+                                        <div class="row"></div>
+                                        <% } %>
+                                            <a style="padding-top: 15px; color:#4095cc" href=""><strong>See more definitions</strong></a>
+                                </section>
+                                <% } %>
+                    </div>
+
+                    <div style="padding: 10px 0;margin-bottom:10px;">
+                        <p style="color:#bdbdbd; font-size:12px;">Important Note: As with all user generated content, the quality and accuracy what you are about to
+                            submit below requires expert moderation. Currently, we’ve only managed to put in place a simple
+                            “popular vote” mechanism which would hardly qualify as expert moderation. As such, definitions
+                            you submitted will only be stored in our database here link but not show up to others when the
+                            chrome extension is being applied.</p>
                     </div>
 
                     <div class="form-group" style="padding-bottom: 10px">
                         <label for="definition">Add your definition</label>
-                        <textarea type="text" name="description" class="form-control" required style='height:120px;'
-                                  placeholder="Something you think people will understand in generation"></textarea>
+                        <textarea type="text" name="description" class="form-control" required style='height:120px;' placeholder="Something you think people will understand in generation"></textarea>
                     </div>
 
                     <div class="form-group" style="padding-bottom: 10px">
                         <label for="source">Source of your definition (If any)</label>
-                        <input type="text" name="source" class="form-control"
-                               placeholder="E.g. Wikipedia, Merriam-Webster, etc">
+                        <input type="text" name="source" class="form-control" placeholder="E.g. Wikipedia, Merriam-Webster, etc">
                     </div>
 
                     <div class="form-group" style="padding-bottom: 10px">
                         <label for="author_name">Author</label>
-                        <input type="text" name="source" class="form-control" required placeholder="Your name">
+                        <input type="text" name="author" class="form-control" required placeholder="Your name">
                     </div>
 
                     <div class="form-group" style="padding-bottom: 10px">
                         <label for="author_role">Role</label>
-                        <input type="text" name="source" class="form-control" placeholder="Your role (e.g. Meteorologist)">
+                        <input type="text" name="role" class="form-control" placeholder="Your role (e.g. Meteorologist)">
                     </div>
-                    <div style="padding-top: 10px">
-                        <button id="submit" type="submit" class="btn btn-default"
-                                style="background-color:#2196F3;color:white;border:none;border-radius:1px;width:150px;height:38ox;font-size:18px">
-                            Submit
-                        </button>
-                    </div>
+                    
                 </form>
+                <div style="padding-top: 10px">
+                        <button id="submit" type="submit" onClick="submitForm()" class="btn btn-default" style="background-color:#2196F3;color:white;border:none;border-radius:1px;width:150px;height:38ox;font-size:18px">
+                            Submit
+                    </button>
+                </div>
             </div>
         </div>
     </div>

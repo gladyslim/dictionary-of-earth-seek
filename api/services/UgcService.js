@@ -2,8 +2,8 @@ module.exports = {
     createNewUGC: async function (ugc) {
         try {
             return await UGC.create({
-                user_name: ugc.user_name,
-                user_role: ugc.user_role,
+                user_name: ugc.author,
+                user_role: ugc.role,
                 key: ugc.key,
                 description: ugc.description,
                 source: ugc.source,
