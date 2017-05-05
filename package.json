@@ -33,9 +33,9 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/dictionary-of-earth.git"
+    "url": "git://github.com/gladyslim/dictionary-of-earth-seek.git"
   },
-  "author": "anonymous node/sails user",
+  "author": "seek",
   "license": "",
   "devDependencies": {
     "express": "4.15.2",
